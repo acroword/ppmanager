@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+    <link ref="stylesheet" href="/css/bootstrap-responsive.min.css" />
+  </head>
+  <body>
+  	<%include  header.ejs%>
+	<div class="row" style="height:40px"><div class="span12"></div></div>
+	<div class="row">
+	    <div class="span2">
+	    	<%include leftbar.ejs %>
+	    </div>
+	    <div class="span10">
+		  	<form class="form-horizontal" method="post">
+		  		<fieldset>
+		  			<legend>添加用户</legend>
+		  		</fieldset>
+		  		<div class="control-group">
+		  			<lable class="control-lable" for="username">用户名</lable>
+		  			<div class="controls">
+		  				<input type="text" class="input-xlarge" id="username" name="username">
+		  				<p class="help-block">用户名，用于登陆和显示</p>
+		  			</div>
+		  		</div>
+		  		<div class="control-group">
+		  			<lable class="control-lable" for="username">密码</lable>
+		  			<div class="controls">
+		  				<input type="text" class="input-xlarge" id="password" name="password">
+		  			</div>
+		  		</div>
+		  		<div class="control-group">
+		  			<lable class="control-lable" for="username">重复输入密码</lable>
+		  			<div class="controls">
+		  				<input type="text" class="input-xlarge" id="password-repeat" name="password-repeat">
+		  			</div>
+		  		</div>
+		  		<div class="form-actions">
+		  			<button type="submit" class="btn btn-primary">保存</button>
+		  		</div>
+	  		</form>
+	    </div>
+	  </div>
+  </body>
+</html>
