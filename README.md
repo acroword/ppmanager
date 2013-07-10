@@ -1,5 +1,7 @@
 PPManager
 =========
 
-Copyright by Acro
----
+usage:
+  The crl management.
+  The crl estimates.
+
