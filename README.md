@@ -1,2 +1,5 @@
 PPManager
 =========
+
+Copyright by Acro
+---
