@@ -1,0 +1,44 @@
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var oTable = $('#maingrid').dataTable({
+			"bPaginate": true,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bSort": false,
+			"bInfo": true,
+			"bAutoWidth": false,
+			"bServerSide": false,
+			"sAjaxSource": "/users/api/getlist",
+			"sAjaxDataProp": "items",
+			"aoColumns": [
+				{"mData": "userid"},
+				{"mData": "username"},
+				{"mData": "status"},
+				{"mData": "indate"},
+				{"mData": "inuser"}
+			]
+		})
+	})
+</script>
+
+<table id="maingrid" name="maingrid" class="table table-bordered">
+	<thead>
+		<th>用户编号</th>
+		<th>用户名</th>
+		<th>状态</th>
+		<th>创建时间</th>
+		<th>创建人</th>
+	</thedad>
+	<tbody>
+	</tbody>
+	<tfoot>
+		<th>用户编号</th>
+		<th>用户名</th>
+		<th>状态</th>
+		<th>创建时间</th>
+		<th>创建人</th>
+	</tfoot>
+</table>
+

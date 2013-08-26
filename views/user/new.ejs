@@ -1,0 +1,77 @@
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery.extend.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/message_cn.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var usermgmt = {
+
+		data: {},
+
+		init: function() {
+			var _self = this;
+
+			$('#mainform').validate({
+				errorClass: "help-inline"
+			});
+
+			$('#mainform').submit(function() {
+				_self.load();
+
+				$.post('/users/api/adduser', _self.data, function(result) {
+					if(result.error) {
+						$('#infoarea').error(result.error);
+					}
+					else
+					{
+						$('#infoarea').success();
+					}
+				})
+				return false;
+			})
+		},
+		load: function() {
+			this.data.userid = $('#userid').val();
+			this.data.username = $('#username').val();
+			this.data.password = $('#password').val();
+			this.data.password_repeat = $('#password_repeat').val();
+		}
+	}
+
+	usermgmt.init();
+})
+
+</script>
+<form class="form-horizontal" id="mainform">
+	<div class="control-group">
+		<lable class="control-label" for="userid">用户编号</lable>
+		<div class="controls">
+			<input type="text" class="span2 required" id="userid" name="userid">
+		</div>
+	</div>
+	<div class="control-group">
+		<lable class="control-label" for="username">用户名</lable>
+		<div class="controls">
+			<input type="text" class="span2 required" id="username" name="username">
+		</div>
+	</div>
+	<div class="control-group">
+		<lable class="control-label" for="password">密码</lable>
+		<div class="controls">
+			<input type="text" class="input-xlarge required" id="password" name="password">
+		</div>
+	</div>
+	<div class="control-group">
+		<lable class="control-label" for="password_repeat">重复输入密码</lable>
+		<div class="controls">
+			<input type="text" class="input-xlarge required" id="password_repeat" name="password_repeat">
+		</div>
+	</div>
+	<div id="infoarea"></div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">保存</button>
+	</div>
+</form>

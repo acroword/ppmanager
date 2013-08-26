@@ -1,28 +1,18 @@
-var mongodb = require('./db');
+var config = require('../config');
+var mongoose = require('mongoose');
 
-function User(user){
-	this.name = user.name;
-	this.age = user.age;
-	this.sex = user.sex;
-};
+mongoose.connect(config.db);
 
-module.exports = User;
+var _User = new mongoose.Schema({
+	userid			: Number,
+	username 		: String,
+	password		: String,
+	ruleid			: Number,
+	status 			: Number,
+	indate 			: Date,
+	inuser 			: String,
+	editdate 		: Date,
+	edituser 		: String
+});
 
-//根据usename查找用户，返回唯一的user.
-User.get = function(username, callback){
-	
-};
-
-//查找所有的user list
-User.getlist = function(callback){
-	mongodb.open(function(err, db){
-		db.collection('tb1', function(err, collection){
-			collection.find().toArray(function(err, items){
-				if(items){
-					console.log(items);
-					callback(err, items);
-				}
-			})
-		});
-	});
-};
+module.exports = mongoose.model('user', _User);
